@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Notepad</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="box wide">
+    <h2>Welcome, <span th:text="${user.fullName}">Name</span></h2>
+
+    <p class="ok" th:if="${param.saved}">Notes saved.</p>
+
+    <form action="/notepad/save" method="post">
+        <textarea name="notes" placeholder="Type your notes here..." th:text="${user.notes}"></textarea>
+
+        <div class="buttons">
+            <button type="submit" name="action" value="save">Save</button>
+            <button type="submit" name="action" value="exit" class="secondary">Save &amp; Exit</button>
+        </div>
+    </form>
+
+    <p class="link"><a href="/logout">Logout without saving</a></p>
+</div>
+</body>
+</html>
